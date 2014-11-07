@@ -2,7 +2,7 @@
 - name: restart mackerel-agent
   service: name=mackerel-agent state=restarted
 - name: update mackerel host status
-  script: roles/mackerel-agent/files/update-host-status.py {{ mackerel_apikey }}
+  script: roles/mackerel-agent/files/update-host-status.py "{{ mackerel_apikey }}"
   register: res
   changed_when: res.rc == 11
   failed_when: res.rc not in [0, 11]
